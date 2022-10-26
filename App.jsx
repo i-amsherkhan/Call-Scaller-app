@@ -1,27 +1,20 @@
-import HomeScreen from "./app/screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Text } from "react-native";
+import { StatusBar } from "react-native";
+import AppStack from "./app/navigators/AppStack";
+import { useState } from "react";
+import AuthStack from "./app/navigators/AuthStack";
+import { Provider as PaperProvider } from "react-native-paper";
 
 export default function App() {
-  const Stack = createNativeStackNavigator();
+  const [isSinged, setisSinged] = useState(true);
   return (
     <>
-      <NavigationContainer>
-        <SafeAreaProvider>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="HomeScreen"
-              component={HomeScreen}
-              options={{
-                headerShown: false
-              }}
-            />
-          </Stack.Navigator>
-        </SafeAreaProvider>
-      </NavigationContainer>
-    
+      <PaperProvider>
+        <StatusBar />
+        <NavigationContainer>
+          {isSinged ? <AppStack /> : <AuthStack />}
+        </NavigationContainer>
+      </PaperProvider>
     </>
   );
 }
