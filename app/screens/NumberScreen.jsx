@@ -14,31 +14,31 @@ const NumberScreen = ({ navigation }) => {
           <DataTable className="px-2 flex-1 h-full">
             <DataTable.Header className="bg-gray-50 mt-6  border-spacing-36 border-gray-300 rounded-lg shadow-lg">
               <DataTable.Title className="truncate w-36">
-                <Text className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <Text className="text-left text-gray-500 uppercase tracking-wider">
                   Phone number
                 </Text>
               </DataTable.Title>
 
-              <DataTable.Title className="px-6 py-3">
-                <Text className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <DataTable.Title className="px-6 py-3 mx-2">
+                <Text className="text-left text-gray-500 uppercase tracking-wider">
                   Call Flow
                 </Text>
               </DataTable.Title>
 
-              <DataTable.Title className="px-6 py-3 ">
-                <Text className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <DataTable.Title className="px-6 py-3 w-32 left-6">
+                <Text className="text-left text-gray-500 uppercase tracking-wider">
                   Calls
                 </Text>
               </DataTable.Title>
 
               <DataTable.Title className="px-6 py-3 ">
-                <Text className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <Text className="text-left text-gray-500 uppercase tracking-wider">
                   Text Messages
                 </Text>
               </DataTable.Title>
 
               <DataTable.Title className="px-6 py-3 ">
-                <Text className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <Text className="text-left text-gray-500 uppercase tracking-wider">
                   Status & Type
                 </Text>
               </DataTable.Title>
@@ -47,32 +47,32 @@ const NumberScreen = ({ navigation }) => {
             <DataTable.Row className="bg-white py-5">
               <DataTable.Cell>
                 <View className="truncate w-36">
-                  <Text className="text-xs">User Purchase</Text>
+                  <Text className=" text-gray-900 ">User Purchase</Text>
                   <View class="mt-4">
-                    <Text className="text-xs pt-2 ">(256) 287-4150</Text>
+                    <Text className=" text-gray-900 pt-2 ">(256) 287-4150</Text>
                   </View>
                 </View>
               </DataTable.Cell>
 
-              <DataTable.Cell className="truncate w-24">
-                <Text className="text-xs text-center">Usama Call Flows</Text>
+              <DataTable.Cell className="truncate w-28 right-3">
+                <Text className=" text-gray-900 text-center">Sher Khan Call Flows</Text>
               </DataTable.Cell>
 
-              <DataTable.Cell className="truncate w-20 left-1">
-                <Text className="text-xs text-center">40000</Text>
+              <DataTable.Cell className="truncate w-32 left-4">
+                <Text className=" text-gray-900 text-center">40000</Text>
               </DataTable.Cell>
 
               <DataTable.Cell className="truncate w-20">
-                <Text className="text-xs text-center">4000</Text>
+                <Text className=" text-gray-900 text-center">400</Text>
               </DataTable.Cell>
 
               <DataTable.Cell className="truncate w-20">
                 <View>
                   <View>
-                    <Text className="text-xs text-center">Active</Text>
+                    <Text className=" text-gray-900 text-center">Active</Text>
                   </View>
                   <View className="pt-2">
-                    <Text className="text-xs text-center">Toll Free</Text>
+                    <Text className=" text-gray-900 text-center">Toll Free</Text>
                   </View>
                 </View>
               </DataTable.Cell>
