@@ -5,13 +5,17 @@ const ForgotPasswordScreen = () => {
   return (
     <View className={` flex-1 items-center justify-center bg-gray-100`}>
       <View className="w-full ">
-        <Image
-          source={{
-            uri: "https://staging.callscaler.com/logos.png",
-          }}
-          className={`h-16 bg-cover bg-no-repeat `}
-        />
         <View className="bg-white p-4 mx-2 mt-10 rounded-lg">
+
+          <View className="my-4">
+            <Image
+              source={{
+                uri: "https://staging.callscaler.com/logos.png",
+              }}
+              className={`w-52 py-5 mx-auto`}
+            />
+          </View>
+
           <View>
             <Text className=" text-gray-900/70 font-medium text-base">
               Forgot your password? No problem. Just let us know your email
@@ -19,6 +23,7 @@ const ForgotPasswordScreen = () => {
               allow you to choose a new one.
             </Text>
           </View>
+
           <View>
             <Text className="text-lg py-2 text-gray-900/70 font-semibold">
               Email:
@@ -35,6 +40,7 @@ const ForgotPasswordScreen = () => {
               </Text>
             </TouchableOpacity>
           </View>
+          
         </View>
       </View>
     </View>

@@ -7,13 +7,16 @@ const LoginScreen = () => {
   return (
     <View className={` flex-1 items-center justify-center bg-gray-100`}>
       <View className="w-full ">
-        <Image
-          source={{
-            uri: "https://staging.callscaler.com/logos.png",
-          }}
-          className={`h-20 w-96 bg-cover bg-no-repeat `}
-        />
         <View className="bg-white p-4 mx-2 mt-10 rounded-lg">
+          <View className="my-4">
+            <Image
+              source={{
+                uri: "https://staging.callscaler.com/logos.png",
+              }}
+              className={`w-52 py-5 mx-auto`}
+            />
+          </View>
+
           <View>
             <Text className="text-lg py-2 text-gray-900/70 font-semibold">
               Email:
@@ -27,6 +30,7 @@ const LoginScreen = () => {
             </Text>
             <TextInput className="px-2 py-1  border border-gray-300 text-gray-900/70 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500" />
           </View>
+          
           <View className="flex-row items-center mt-5 mx-2">
             <Checkbox className="text-blue-600 bg-gray-100 rounded border-gray-500 focus:ring-blue-500" />
             <Text className="text-lg font-medium px-2 text-gray-900/70">
@@ -47,6 +51,7 @@ const LoginScreen = () => {
               </Text>
             </TouchableOpacity>
           </View>
+
         </View>
       </View>
     </View>

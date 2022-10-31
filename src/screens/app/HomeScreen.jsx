@@ -1,12 +1,12 @@
 import { Text, ScrollView, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { PhoneArrowDownLeftIcon } from "react-native-heroicons/outline";
 import { ArrowUpIcon } from "react-native-heroicons/mini";
 
-import Chart from "../components/Chart";
-import DateRange from "../components/DateRange";
+import Chart from "../../components/Chart";
+import DateRange from "../../components/DateRange";
 
 const HomeScreen = ({ navigation }) => {
   const [date, setDate] = useState(false);
@@ -19,7 +19,9 @@ const HomeScreen = ({ navigation }) => {
     <SafeAreaView>
       <ScrollView>
         <Header navigation={navigation} />
-
+        <View className="bg-white  px-4 py-5 border-b border-gray-200 rounded-lg shadow mx-2 mt-2">
+          <Text className="text-lg leading-6 text-gray-900">Home</Text>
+        </View>
         <View className="space-y-4 mt-5">
           <View className="bg-white pt-5 mx-2 px-4 py-5 shadow rounded-lg overflow-hidden relative">
             <View>

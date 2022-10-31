@@ -1,21 +1,22 @@
-import { View, Text } from "react-native";
 import React from "react";
-import HomeScreen from "../screens/HomeScreen";
-import CallsScreen from "../screens/CallsScreen";
-import NumberScreen from "../screens/NumberScreen";
+import HomeScreen from "../screens/app/HomeScreen"
+import CallsScreen from "../screens/app/CallsScreen";
+import NumberScreen from "../screens/app/NumberScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawerContent from "../components/CustomDrawer";
-import Header from "../components/Header";
+
 import {
   ChatBubbleOvalLeftEllipsisIcon,
   EnvelopeOpenIcon,
   FireIcon,
   HomeIcon,
   PhoneIcon,
+  ArrowRightOnRectangleIcon,
 } from "react-native-heroicons/outline";
 
-import TextMessagesScreen from "../screens/TextMessageScreen";
-import VoiceMailScreen from "../screens/VoiceMailScreen";
+import TextMessagesScreen from "../screens/app/TextMessageScreen";
+import VoiceMailScreen from "../screens/app/VoiceMailScreen";
+import LoginScreen from "../screens/auth/LoginScreen";
 
 const AppStack = () => {
   const Drawer = createDrawerNavigator();
@@ -27,9 +28,7 @@ const AppStack = () => {
         headerShown: false,
         drawerActiveBackgroundColor: "#2269F9",
         drawerActiveTintColor: "#fff",
-      
       }}
-      
     >
       <Drawer.Screen
         name="Home"
@@ -77,8 +76,17 @@ const AppStack = () => {
           ),
         }}
       />
+
+      <Drawer.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <ArrowRightOnRectangleIcon size={size} color={color} />
+          ),
+        }}
+      />
     </Drawer.Navigator>
-    
   );
 };
 
