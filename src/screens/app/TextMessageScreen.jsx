@@ -57,15 +57,15 @@ const TextMessagesScreen = ({ navigation }) => {
               </DataTable.Cell>
 
               <TouchableOpacity>
-                <DataTable.Cell className=" flex-1 truncate  py-2 h-10 rounded-md px-2 bg-green-500 items-center justify-center left-2">
-                  <Text className="text-center text-white font-semibold">
+                <DataTable.Cell className="w- py-2 h-10 rounded-md px-2 bg-green-500 items-center justify-center left-2">
+                  <Text className="text-center text-white font-semibold truncate">
                     (510) 298-1672
                   </Text>
                 </DataTable.Cell>
               </TouchableOpacity>
 
-              <DataTable.Cell className="flex-1 items-center justify-center left-8">
-                <Text>Hello World</Text>
+              <DataTable.Cell className="w-20 items-center justify-center left-8">
+                <Text className="truncate">Hello World</Text>
               </DataTable.Cell>
 
               <DataTable.Cell className="flex-1 truncate items-center justify-center left-6 px-2">

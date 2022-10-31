@@ -78,7 +78,7 @@ const AppStack = () => {
       />
 
       <Drawer.Screen
-        name="Login"
+        name="Logout"
         component={LoginScreen}
         options={{
           drawerIcon: ({ color, size }) => (

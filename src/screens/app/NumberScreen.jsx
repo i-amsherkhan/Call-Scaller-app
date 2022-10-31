@@ -13,7 +13,7 @@ const NumberScreen = ({ navigation }) => {
         <View className="bg-white  px-4 py-5 border-b border-gray-200 rounded-lg shadow mx-2 mt-2">
           <Text className="text-lg leading-6 text-gray-900">Numbers</Text>
         </View>
-        
+
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
           <DataTable className="px-2 flex-1 h-full">
             <DataTable.Header className="bg-gray-50 mt-6  border-spacing-36 border-gray-300 rounded-lg shadow-lg">
@@ -46,11 +46,9 @@ const NumberScreen = ({ navigation }) => {
                   Status & Type
                 </Text>
               </DataTable.Title>
-
             </DataTable.Header>
 
             <DataTable.Row className="bg-white py-5">
-              
               <DataTable.Cell>
                 <View className="truncate w-36">
                   <Text className=" text-gray-900 ">User Purchase</Text>
@@ -60,8 +58,8 @@ const NumberScreen = ({ navigation }) => {
                 </View>
               </DataTable.Cell>
 
-              <DataTable.Cell className="truncate w-28 right-3">
-                <Text className=" text-gray-900 text-center">
+              <DataTable.Cell className="w-24 right-3">
+                <Text className="truncate text-gray-900 text-center">
                   Sher Khan Call Flows
                 </Text>
               </DataTable.Cell>
@@ -86,7 +84,6 @@ const NumberScreen = ({ navigation }) => {
                   </View>
                 </View>
               </DataTable.Cell>
-
             </DataTable.Row>
           </DataTable>
         </ScrollView>
