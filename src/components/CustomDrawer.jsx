@@ -21,8 +21,8 @@ function CustomDrawerContent(props) {
 
           <View>
             <Text className="text-lg text-white mt-2 mx-2">Curise Brains</Text>
-            <View className="mx-2 bg-blue-500 inline-flex items-center py-0.5 rounded-full  w-20 mt-2">
-              <Text className="text-sm font-medium text-white">23.56</Text>
+            <View className="mx-2 bg-blue-500 inline-flex items-center py-0.5 rounded-full w-16 mt-2">
+              <Text className="text-sm font-medium text-white">$ 23.56</Text>
             </View>
             <View className="mx-2 mt-1">
               <Text className="text-base text-white">High Volume Plan</Text>

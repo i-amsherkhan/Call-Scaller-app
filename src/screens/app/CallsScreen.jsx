@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, StatusBar, TouchableOpacity, Modal, Pressable } from "react-native";
+import React, { useState } from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";
@@ -8,6 +8,8 @@ import { DataTable } from "react-native-paper";
 import { PlayCircleIcon } from "react-native-heroicons/outline";
 
 const CallsScreen = ({ navigation }) => {
+  
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -16,11 +18,11 @@ const CallsScreen = ({ navigation }) => {
           <Text className="text-lg leading-6 text-gray-900">Calls</Text>
         </View>
 
-         <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
+      
+
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
           <DataTable className="px-2 flex-1 h-full">
-
             <DataTable.Header className="bg-gray-50 mt-6 border-spacing-36 border-gray-300 rounded-lg shadow-lg">
-
               <DataTable.Title className="truncate w-44">
                 <Text className="text-left text-gray-500 uppercase tracking-wider">
                   Phone number
@@ -50,11 +52,9 @@ const CallsScreen = ({ navigation }) => {
                   DATE
                 </Text>
               </DataTable.Title>
-              
             </DataTable.Header>
 
-              <DataTable.Row className="bg-white py-5">
-
+            <DataTable.Row className="bg-white py-5">
               <DataTable.Cell className="flex-1">
                 <View className="truncate">
                   <Text className="text-gray-900 ">Local Testing Purchase</Text>
@@ -94,7 +94,6 @@ const CallsScreen = ({ navigation }) => {
                   </View>
                 </View>
               </DataTable.Cell>
-
             </DataTable.Row>
           </DataTable>
         </ScrollView>
