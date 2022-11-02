@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "CallScaler",
-    "slug": "CallScaler",
+    "name": "Call Scaler",
+    "slug": "callscaler",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,8 +21,8 @@
       "supportsTablet": true
     },
     "android": {
-      "package" : "com.callScaler",
-      "versionCode": 1 ,
+      "package": "com.callScaler",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -30,6 +30,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7da7d864-a099-4274-adc6-6c3d4f089a9a"
+      }
     }
   }
 }
