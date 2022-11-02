@@ -10,7 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 app.json
-esa.json
+eas.json
 
 # macOS
 .DS_Store
