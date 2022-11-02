@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   Modal,
   Pressable,
-  StyleSheet,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -29,8 +28,8 @@ const TextMessagesScreen = ({ navigation }) => {
               <View className="flex-1 justify-evenly  items-center px-2 shadow-2xl">
                 <View className="relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden transform transition-all w-full">
                   <View>
-                    <Text className="text-center">Text-Messages</Text>
-                    <Text className="text-center"> Message</Text>
+                    <Text className="text-center">Text-Me ssages</Text>
+                    <Text className="text-center my-3"> Message</Text>
                   </View>
 
                   <Pressable>

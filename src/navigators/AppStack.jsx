@@ -1,5 +1,5 @@
 import React from "react";
-import HomeScreen from "../screens/app/HomeScreen"
+import HomeScreen from "../screens/app/HomeScreen";
 import CallsScreen from "../screens/app/CallsScreen";
 import NumberScreen from "../screens/app/NumberScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -28,6 +28,7 @@ const AppStack = () => {
         headerShown: false,
         drawerActiveBackgroundColor: "#2269F9",
         drawerActiveTintColor: "#fff",
+        drawerLabelStyle: { marginLeft: -24 },
       }}
     >
       <Drawer.Screen
