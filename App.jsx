@@ -6,7 +6,8 @@ import AuthStack from "./src/navigators/AppStack";
 import { Provider as PaperProvider } from "react-native-paper";
 
 export default function App() {
-  const [isSinged, setisSinged] = useState(true);
+  const [isSinged, setIsSinged] = useState(false);
+
   return (
     <>
       <PaperProvider>
