@@ -38,12 +38,6 @@ const LoginScreen = ({ navigation }) => {
           </View>
 
           <View className={`flex-row mt-2 items-end justify-end`}>
-            <Text
-              className="mx-2 underline text-sm text-gray-600 font-semibold"
-              onPress={() => navigation.navigate("ForgotPassword")}
-            >
-              Forgot your password?
-            </Text>
             <TouchableOpacity
               className="bg-black w-20 rounded-md py-2 font-semibold text-base"
               onPress={() => navigation.navigate("Home")}

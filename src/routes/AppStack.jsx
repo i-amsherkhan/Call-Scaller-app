@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HomeScreen from "../screens/app/HomeScreen";
 import CallsScreen from "../screens/app/CallsScreen";
 import NumberScreen from "../screens/app/NumberScreen";
@@ -19,6 +19,7 @@ import VoiceMailScreen from "../screens/app/VoiceMailScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
 
 const AppStack = () => {
+  const [isSinged, setIsSinged] = useState(true)
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator
@@ -79,12 +80,14 @@ const AppStack = () => {
       />
 
       <Drawer.Screen
+      onPress={() =>setIsSinged(prevSinged => false)}
         name="Logout"
         component={LoginScreen}
         options={{
           drawerIcon: ({ color, size }) => (
             <ArrowRightOnRectangleIcon size={size} color={color} />
           ),
+          
         }}
       />
     </Drawer.Navigator>
