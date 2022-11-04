@@ -11,6 +11,6 @@ npm-debug.*
 web-build/
 app.json
 eas.json
-
+yarn-error.log
 # macOS
 .DS_Store
