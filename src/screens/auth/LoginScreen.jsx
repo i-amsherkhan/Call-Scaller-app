@@ -1,10 +1,8 @@
 import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
-import { Linking } from "react-native";
 import React from "react";
 import Checkbox from "expo-checkbox";
 
 const LoginScreen = ({ navigation }) => {
-  
   return (
     <View className={` flex-1 items-center justify-center bg-gray-100`}>
       <View className="w-full ">
@@ -40,7 +38,10 @@ const LoginScreen = ({ navigation }) => {
           </View>
 
           <View className={`flex-row mt-2 items-end justify-end`}>
-            <Text className="mx-2 underline text-sm text-gray-600 font-semibold">
+            <Text
+              className="mx-2 underline text-sm text-gray-600 font-semibold"
+              onPress={() => navigation.navigate("ForgotPassword")}
+            >
               Forgot your password?
             </Text>
             <TouchableOpacity
