@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
               </View>
               <Text className="ml-16 text-base  text-gray-500 truncate">
                 Calls Today
-              </Text>
+              </Text> 
               <View className="flex-row ">
                 <Text className="ml-16 text-2xl font-semibold truncate pr-3">
                   9
