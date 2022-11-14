@@ -1,7 +1,5 @@
 import {
   View,
-  Text,
-  TouchableHighlight,
   TouchableOpacity,
   Image,
 } from "react-native";

@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, TouchableOpacity, Modal, Pressable } from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";
@@ -8,8 +8,6 @@ import { DataTable } from "react-native-paper";
 import { PlayCircleIcon } from "react-native-heroicons/outline";
 
 const CallsScreen = ({ navigation }) => {
-  
-
   return (
     <SafeAreaView>
       <ScrollView>
@@ -17,8 +15,6 @@ const CallsScreen = ({ navigation }) => {
         <View className="bg-white  px-4 py-5 border-b border-gray-200 rounded-lg shadow mx-2 mt-2">
           <Text className="text-lg leading-6 text-gray-900">Calls</Text>
         </View>
-
-      
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
           <DataTable className="px-2 flex-1 h-full">
