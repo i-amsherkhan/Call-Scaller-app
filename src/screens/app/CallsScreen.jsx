@@ -1,12 +1,5 @@
-import {
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  Modal,
-  Pressable,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";

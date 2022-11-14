@@ -1,10 +1,11 @@
 import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import React, { useContext, useState } from "react";
 import Checkbox from "expo-checkbox";
-
+import { Auth } from "../../context/AuthProvider";
 
 const LoginScreen = () => {
-  
+  const { handleSingedIn } = useContext(Auth);
+
   return (
     <View className={` flex-1 items-center justify-center bg-gray-100`}>
       <View className="w-full ">
@@ -42,6 +43,7 @@ const LoginScreen = () => {
           <View className={`flex-row mt-2 items-end justify-end`}>
             <TouchableOpacity
               className="bg-black w-20 rounded-md py-2 font-semibold text-base"
+              onPress={handleSingedIn}
             >
               <Text className="text-white mx-auto text-base font-semibold">
                 Log In

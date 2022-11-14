@@ -5,7 +5,6 @@ import NumberScreen from "../screens/app/NumberScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawerContent from "../components/CustomDrawer";
 
-
 import {
   ChatBubbleOvalLeftEllipsisIcon,
   EnvelopeOpenIcon,
@@ -19,9 +18,9 @@ import TextMessagesScreen from "../screens/app/TextMessageScreen";
 import VoiceMailScreen from "../screens/app/VoiceMailScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
 
+
 const AppStack = () => {
  
-
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator
@@ -81,15 +80,7 @@ const AppStack = () => {
         }}
       />
 
-      <Drawer.Screen
-        name="Logout"
-        component={LoginScreen}
-        options={{
-          drawerIcon: ({ color, size }) => (
-            <ArrowRightOnRectangleIcon size={size} color={color} />
-          ),
-        }}
-      />
+     
     </Drawer.Navigator>
   );
 };
