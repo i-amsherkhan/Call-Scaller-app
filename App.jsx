@@ -7,11 +7,12 @@ import { Auth } from "./src/context/AuthProvider";
 import { useState } from "react";
 
 export default function App() {
-  const [singedIn, setSingedIn] = useState(true);
+  const [singedIn, setSingedIn] = useState(false);
 
   function handleSingedIn() {
     setSingedIn((prevSingedIn) => true);
   }
+
   function handleSingedOut() {
     setSingedIn((prevSingedIn) => false);
   }

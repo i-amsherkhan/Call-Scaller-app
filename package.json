@@ -16,7 +16,7 @@
     "expo": "^47.0.0",
     "expo-checkbox": "~2.2.2",
     "expo-status-bar": "~1.4.2",
-    "expo-updates": "~0.15.4",
+    "expo-updates": "~0.15.5",
     "nativewind": "^2.0.11",
     "react": "18.1.0",
     "react-native": "0.70.5",
