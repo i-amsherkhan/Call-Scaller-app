@@ -11,12 +11,11 @@ import {
   FireIcon,
   HomeIcon,
   PhoneIcon,
-  ArrowRightOnRectangleIcon,
 } from "react-native-heroicons/outline";
 
 import TextMessagesScreen from "../screens/app/TextMessageScreen";
 import VoiceMailScreen from "../screens/app/VoiceMailScreen";
-import LoginScreen from "../screens/auth/LoginScreen";
+
 
 
 const AppStack = () => {
@@ -79,8 +78,7 @@ const AppStack = () => {
           ),
         }}
       />
-
-     
+      
     </Drawer.Navigator>
   );
 };
