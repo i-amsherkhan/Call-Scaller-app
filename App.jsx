@@ -5,11 +5,27 @@ import AppStack from "./src/routes/AppStack";
 import AuthStack from "./src/routes/AuthStack";
 import { Auth } from "./src/context/AuthProvider";
 import { ApiContext } from "./src/context/ApiProvider";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState, useReducer } from "react";
+
+const HANDLEAUTH = {
+  SINGEDIN: "handleSingedIn",
+  SINGEDOUT: "handleSingedOut",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case HANDLEAUTH.SINGEDIN:
+      return { auth: (state.auth = true) };
+    case HANDLEAUTH.SINGEDOUT:
+      return { auth: (state.auth = false) };
+
+    default:
+      return state;
+  }
+}
 
 export default function App() {
-  const [singedIn, setSingedIn] = useState(true);
+  const [state, dispatch] = useReducer(reducer, { auth: false });
   const [testing, setTesting] = useState();
 
   useEffect(() => {
@@ -19,13 +35,14 @@ export default function App() {
   }, []);
 
   function handleSingedIn() {
-    setSingedIn((prevSingedIn) => true);
+    dispatch({ type: HANDLEAUTH.SINGEDIN });
   }
 
   function handleSingedOut() {
-    setSingedIn((prevSingedIn) => false);
+    dispatch({ type: HANDLEAUTH.SINGEDOUT });
   }
 
+  console.log(state.auth);
   return (
     <>
       <PaperProvider>
@@ -33,7 +50,7 @@ export default function App() {
         <NavigationContainer>
           <Auth.Provider value={{ handleSingedOut, handleSingedIn }}>
             <ApiContext.Provider value={{ testing }}>
-              {singedIn ? <AppStack /> : <AuthStack />}
+              {state.auth ? <AppStack /> : <AuthStack />}
             </ApiContext.Provider>
           </Auth.Provider>
         </NavigationContainer>
