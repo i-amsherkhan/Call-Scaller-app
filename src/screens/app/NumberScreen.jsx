@@ -62,9 +62,8 @@ const NumberScreen = ({ navigation }) => {
                 </View>
               </DataTable.Cell>
 
-            
               <FlatList
-                keyExtractor={(item) => item.id} 
+                keyExtractor={(item) => item.id}
                 data={testing}
                 renderItem={({ item }) => (
                   <>
@@ -78,7 +77,7 @@ const NumberScreen = ({ navigation }) => {
               />
 
               <DataTable.Cell className="truncate w-32 left-4">
-                <Text className=" text-gray-900 text-center">4000</Text>
+                <Text className="text-gray-900 text-center">4000</Text>
               </DataTable.Cell>
 
               <DataTable.Cell className="truncate w-20">
