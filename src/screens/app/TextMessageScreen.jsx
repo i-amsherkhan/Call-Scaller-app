@@ -35,7 +35,8 @@ const TextMessagesScreen = ({ navigation }) => {
                   <Pressable>
                     <TouchableOpacity
                       onPress={() => setModalVisible(false)}
-                      className="bg-blue-600 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 mt-2 w-full">
+                      className="bg-blue-600 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 mt-2 w-full"
+                    >
                       <Text className="text-white text-base text-center">
                         Close
                       </Text>
@@ -45,10 +46,13 @@ const TextMessagesScreen = ({ navigation }) => {
               </View>
             </Modal>
           </View>
+
           <View className="bg-white  px-4 py-5 border-b border-gray-200 rounded-lg shadow mx-2 mt-2">
             <Text className="text-lg leading-6 text-gray-900">Messages</Text>
           </View>
-          <ScrollView horizontal={true}>
+
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+
             <DataTable className="px-2 flex-1 h-full">
               <DataTable.Header className="bg-gray-50 mt-6 border-spacing-36 border-gray-300 rounded-lg shadow-lg">
                 <DataTable.Title className="truncate w-44">
@@ -136,6 +140,7 @@ const TextMessagesScreen = ({ navigation }) => {
                   </View>
                 </DataTable.Cell>
               </DataTable.Row>
+              
             </DataTable>
           </ScrollView>
         </ScrollView>
