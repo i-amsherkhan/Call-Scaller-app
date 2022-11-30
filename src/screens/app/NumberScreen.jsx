@@ -2,12 +2,11 @@ import { View, Text, ScrollView, FlatList } from "react-native";
 import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../components/Header";
-import { ApiContext } from "../../context/ApiProvider";
+import { ApiContext } from "../../context/ContextProvider";
 import { DataTable } from "react-native-paper";
 
 const NumberScreen = ({ navigation }) => {
   const { testing } = useContext(ApiContext);
-  console.log(testing);
 
   return (
     <SafeAreaView>
@@ -18,8 +17,10 @@ const NumberScreen = ({ navigation }) => {
           <Text className="text-lg leading-6 text-gray-900">Numbers</Text>
         </View>
 
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+
           <DataTable className="px-2 flex-1 h-full">
+            
             <DataTable.Header className="bg-gray-50 mt-6  border-spacing-36 border-gray-300 rounded-lg shadow-lg">
               <DataTable.Title className="truncate w -36">
                 <Text className="text-left text-gray-500 uppercase tracking-wider">
@@ -96,6 +97,7 @@ const NumberScreen = ({ navigation }) => {
                   </View>
                 </View>
               </DataTable.Cell>
+
             </DataTable.Row>
           </DataTable>
         </ScrollView>

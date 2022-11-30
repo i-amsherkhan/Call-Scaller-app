@@ -16,7 +16,7 @@ const CallsScreen = ({ navigation }) => {
           <Text className="text-lg leading-6 text-gray-900">Calls</Text>
         </View>
 
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <DataTable className="px-2 flex-1 h-full">
             <DataTable.Header className="bg-gray-50 mt-6 border-spacing-36 border-gray-300 rounded-lg shadow-lg">
               <DataTable.Title className="truncate w-44">

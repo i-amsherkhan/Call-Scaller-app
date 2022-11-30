@@ -1,32 +1,33 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar, Text } from "react-native";
+import { StatusBar } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import AppStack from "./src/routes/AppStack";
 import AuthStack from "./src/routes/AuthStack";
-import { Auth } from "./src/context/AuthProvider";
-import { ApiContext } from "./src/context/ApiProvider";
+import { Auth } from "./src/context/ContextProvider";
+import { ApiContext } from "./src/context/ContextProvider";
+import { Login } from "./src/context/ContextProvider";
 import { useEffect, useState, useReducer } from "react";
 
-const HANDLEAUTH = {
+const HANDLE_AUTH = {
   SINGEDIN: "handleSingedIn",
   SINGEDOUT: "handleSingedOut",
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case HANDLEAUTH.SINGEDIN:
+    case HANDLE_AUTH.SINGEDIN:
       return { auth: (state.auth = true) };
-    case HANDLEAUTH.SINGEDOUT:
+    case HANDLE_AUTH.SINGEDOUT:
       return { auth: (state.auth = false) };
-
     default:
-      return state;
+      break;
   }
 }
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, { auth: false });
   const [testing, setTesting] = useState();
+
 
   useEffect(() => {
     fetch("https://emojihub.herokuapp.com/api/random")
@@ -35,14 +36,13 @@ export default function App() {
   }, []);
 
   function handleSingedIn() {
-    dispatch({ type: HANDLEAUTH.SINGEDIN });
+    dispatch({ type: HANDLE_AUTH.SINGEDIN });
   }
 
   function handleSingedOut() {
-    dispatch({ type: HANDLEAUTH.SINGEDOUT });
+    dispatch({ type: HANDLE_AUTH.SINGEDOUT });
   }
 
-  console.log(state.auth);
   return (
     <>
       <PaperProvider>

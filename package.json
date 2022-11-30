@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.14",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/drawer": "^6.5.0",
     "@react-navigation/native": "^6.0.13",
@@ -22,7 +23,6 @@
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-chart-kit": "^6.12.0",
-    "react-native-check-box": "^2.1.7",
     "react-native-gesture-handler": "~2.8.0",
     "react-native-heroicons": "^3.2.0",
     "react-native-modern-datepicker": "^1.0.0-beta.91",

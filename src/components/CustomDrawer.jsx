@@ -8,7 +8,7 @@ import {
   ArrowRightOnRectangleIcon,
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
-import { Auth } from "../context/AuthProvider";
+import { Auth } from "../context/ContextProvider";
 
 function CustomDrawerContent(props) {
   const { handleSingedOut } = useContext(Auth);
