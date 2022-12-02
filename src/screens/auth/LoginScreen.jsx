@@ -4,15 +4,9 @@ import { Auth } from "../../context/ContextProvider";
 import Checkbox from "expo-checkbox";
 
 const LoginScreen = () => {
-  const { handleSingedIn } = useContext(Auth);
+  const { handleSingedIn, state, dispatch } = useContext(Auth);
   const [isChecked, setChecked] = useState(false);
-  const [loginForm, setLoginForm] = useState({
-    email: "",
-    password: "",
-  });
-
-  
-
+  console.log(state);
   return (
     <View className={`flex-1 items-center justify-center bg-gray-100`}>
       <View className="w-full ">
@@ -33,33 +27,32 @@ const LoginScreen = () => {
             <TouchableOpacity>
               <TextInput
                 className="px-2 py-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500"
-                value={loginForm.email}
-                onChangeText={(e) =>
-                  setLoginForm({
-                    ...loginForm,
-                    email: e,
-                  })
-                }
+                value={state.email}
+                onChangeText={(email) => {
+                  dispatch({ type: "email" , value: email });
+                }}
                 autoComplete={"email"}
                 autoCorrect={false}
               />
             </TouchableOpacity>
-
+            {/* {!state.email || state.auth ? (
+              <Text className="text-red-500">Email is not Correct:</Text>
+            ) : null} */}
             <Text className="text-lg py-2 text-gray-900/70 font-semibold">
               Password:
             </Text>
             <TextInput
               className="px-2 py-1  border border-gray-300 text-gray-900/70 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500"
-              value={loginForm.password}
+              value={state.password}
               autoComplete={"password"}
               secureTextEntry={true}
-              onChangeText={(e) =>
-                setLoginForm({
-                  ...loginForm,
-                  password: e,
-                })
-              }
+              onChangeText={(text) => {
+                dispatch({ type: "password", value: text });
+              }}
             />
+            {/* {!state.password || state.auth ? (
+              <Text className="text-red-500"> Password is not Correct</Text>
+            ) : null} */}
           </View>
 
           <View className="flex-row items-center mt-5 mx-2">
