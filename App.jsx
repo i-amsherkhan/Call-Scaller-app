@@ -11,19 +11,20 @@ const HANDLE_AUTH = {
   SINGEDIN: "handleSingedIn",
   SINGEDOUT: "handleSingedOut",
 };
-
 export default function App() {
   const [testing, setTesting] = useState();
-  // useEffect(() => {
-  //   fetch("https://emojihub.herokuapp.com/api/random")
-  //     .then((response) => response.json())
-  //     .then((data) => setTesting([data]));
-  // }, []);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((data) => setTesting(data));
+  }, []);
 
+  console.log(testing);
+  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   const [state, dispatch] = useReducer(reducer, {
     email: "",
     password: "",
-    auth: false,
+    auth: true,
   });
 
   function reducer(state, action) {
@@ -31,21 +32,25 @@ export default function App() {
       case HANDLE_AUTH.SINGEDIN:
         if (!state.email || !state.password) {
           return { auth: (state.auth = false) };
+        } else if (!reg.test(state.email)) {
+          return { auth: (state.auth = false) };
         } else {
           return { auth: (state.auth = true) };
         }
-      case HANDLE_AUTH.SINGEDOUT:
-        return { auth: (state.auth = false) };
       case "email":
         return { ...state, email: action.value };
       case "password":
         return { ...state, password: action.value };
+
+      case HANDLE_AUTH.SINGEDOUT:
+        return { auth: (state.auth = false) };
 
       default:
         break;
     }
   }
 
+  console.log(state);
   function handleSingedIn() {
     dispatch({ type: HANDLE_AUTH.SINGEDIN });
   }
@@ -60,7 +65,7 @@ export default function App() {
         <StatusBar />
         <NavigationContainer>
           <Auth.Provider
-            value={{ handleSingedOut, handleSingedIn, state, dispatch }}
+            value={{ handleSingedOut, handleSingedIn, state, dispatch, reg }}
           >
             <ApiContext.Provider value={{ testing }}>
               {state.auth ? <AppStack /> : <AuthStack />}

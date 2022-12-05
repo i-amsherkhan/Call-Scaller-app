@@ -4,9 +4,9 @@ import { Auth } from "../../context/ContextProvider";
 import Checkbox from "expo-checkbox";
 
 const LoginScreen = () => {
-  const { handleSingedIn, state, dispatch } = useContext(Auth);
+  const { handleSingedIn, state, dispatch, } = useContext(Auth);
   const [isChecked, setChecked] = useState(false);
-  console.log(state);
+
   return (
     <View className={`flex-1 items-center justify-center bg-gray-100`}>
       <View className="w-full ">
