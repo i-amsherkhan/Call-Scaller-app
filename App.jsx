@@ -50,7 +50,6 @@ export default function App() {
     }
   }
 
-  console.log(state);
   function handleSingedIn() {
     dispatch({ type: HANDLE_AUTH.SINGEDIN });
   }
