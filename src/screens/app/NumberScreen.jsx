@@ -18,9 +18,7 @@ const NumberScreen = ({ navigation }) => {
         </View>
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-
           <DataTable className="px-2 flex-1 h-full">
-            
             <DataTable.Header className="bg-gray-50 mt-6  border-spacing-36 border-gray-300 rounded-lg shadow-lg">
               <DataTable.Title className="truncate w -36">
                 <Text className="text-left text-gray-500 uppercase tracking-wider">
@@ -53,7 +51,7 @@ const NumberScreen = ({ navigation }) => {
               </DataTable.Title>
             </DataTable.Header>
 
-            <DataTable.Row className="bg-white py-5">
+            <DataTable.Row className="bg-white py-5 ">
               <DataTable.Cell>
                 <View className="truncate w-36">
                   <Text className=" text-gray-900 ">User Purchase</Text>
@@ -63,20 +61,20 @@ const NumberScreen = ({ navigation }) => {
                 </View>
               </DataTable.Cell>
 
-              <FlatList
+              {/* <FlatList
                 keyExtractor={(item) => item.id}
                 data={testing}
                 renderItem={({ item }) => (
                   <>
-                    <DataTable.Cell className="w-24 mt-2">
-                      <Text className="truncate text-gray-900 text-center">
-                        {item.name}
-                      </Text>
-                    </DataTable.Cell>
                   </>
                 )}
-              />
+              /> */}
 
+              <DataTable.Cell className="w-24 mt-2 ">
+                <Text className="truncate text-gray-900 text-center">
+                  Hello Call Flow
+                </Text>
+              </DataTable.Cell>
               <DataTable.Cell className="truncate w-32 left-4">
                 <Text className="text-gray-900 text-center">4000</Text>
               </DataTable.Cell>
@@ -97,7 +95,6 @@ const NumberScreen = ({ navigation }) => {
                   </View>
                 </View>
               </DataTable.Cell>
-
             </DataTable.Row>
           </DataTable>
         </ScrollView>
