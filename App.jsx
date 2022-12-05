@@ -24,7 +24,7 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, {
     email: "",
     password: "",
-    auth: true,
+    auth: false,
   });
 
   function reducer(state, action) {
