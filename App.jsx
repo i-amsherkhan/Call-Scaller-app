@@ -5,22 +5,22 @@ import AppStack from "./src/routes/AppStack";
 import AuthStack from "./src/routes/AuthStack";
 import { Auth } from "./src/context/ContextProvider";
 import { ApiContext } from "./src/context/ContextProvider";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useState, useReducer, useRef } from "react";
 
 const HANDLE_AUTH = {
   SINGEDIN: "handleSingedIn",
   SINGEDOUT: "handleSingedOut",
 };
 export default function App() {
-  const [testing, setTesting] = useState();
+  const [testing, setTesting] = useState([]);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((data) => setTesting(data));
   }, []);
 
-  console.log(testing);
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+
   const [state, dispatch] = useReducer(reducer, {
     email: "",
     password: "",
@@ -30,7 +30,7 @@ export default function App() {
   function reducer(state, action) {
     switch (action.type) {
       case HANDLE_AUTH.SINGEDIN:
-        if (!state.email || !state.password) {
+        if (!reg.test(state.email) || !state.password) {
           return { auth: (state.auth = false) };
         } else if (!reg.test(state.email)) {
           return { auth: (state.auth = false) };
@@ -49,7 +49,7 @@ export default function App() {
         break;
     }
   }
-
+  console.log(state);
   function handleSingedIn() {
     dispatch({ type: HANDLE_AUTH.SINGEDIN });
   }

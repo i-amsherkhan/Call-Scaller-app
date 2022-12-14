@@ -4,7 +4,7 @@ import { Auth } from "../../context/ContextProvider";
 import Checkbox from "expo-checkbox";
 
 const LoginScreen = () => {
-  const { handleSingedIn, state, dispatch, } = useContext(Auth);
+  const { handleSingedIn, state, dispatch } = useContext(Auth);
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -28,16 +28,21 @@ const LoginScreen = () => {
               <TextInput
                 className="px-2 py-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500"
                 value={state.email}
+                placeholder="Enter your email:"
                 onChangeText={(email) => {
-                  dispatch({ type: "email" , value: email });
+                  dispatch({ type: "email", value: email });
                 }}
                 autoComplete={"email"}
                 autoCorrect={false}
               />
             </TouchableOpacity>
-            {/* {!state.email || state.auth ? (
-              <Text className="text-red-500">Email is not Correct:</Text>
-            ) : null} */}
+
+            {!state.password || state.auth ? (
+              <Text className="text-rose-600">
+                The selected email is invalid.
+              </Text>
+            ) : null}
+
             <Text className="text-lg py-2 text-gray-900/70 font-semibold">
               Password:
             </Text>
@@ -46,13 +51,11 @@ const LoginScreen = () => {
               value={state.password}
               autoComplete={"password"}
               secureTextEntry={true}
+              placeholder="Enter your password:"
               onChangeText={(text) => {
                 dispatch({ type: "password", value: text });
               }}
             />
-            {/* {!state.password || state.auth ? (
-              <Text className="text-red-500"> Password is not Correct</Text>
-            ) : null} */}
           </View>
 
           <View className="flex-row items-center mt-5 mx-2">
