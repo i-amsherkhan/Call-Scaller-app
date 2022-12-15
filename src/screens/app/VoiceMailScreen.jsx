@@ -15,7 +15,7 @@ const VoiceMailScreen = ({ navigation }) => {
           <Text className="text-lg leading-6 text-gray-900">Voicemails</Text>
         </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <DataTable className="px-2 flex-1 h-full">
+          <DataTable className="px-2 py-2  flex-1 h-full">
             <DataTable.Header className="bg-gray-50 mt-6 border-spacing-36 border-gray-300 rounded-lg shadow-lg">
               <DataTable.Title className="truncate w-44">
                 <Text className="text-left text-gray-500 uppercase tracking-wider">
@@ -59,8 +59,8 @@ const VoiceMailScreen = ({ navigation }) => {
               </DataTable.Cell>
 
               <TouchableOpacity>
-                <DataTable.Cell className=" flex-1 truncate px-4 py-2 h-10 rounded-md bg-green-500 items-center justify-center left-2">
-                  <Text className="text-center text-white font-semibold">
+                <DataTable.Cell className=" flex-1 truncate px-3 py-0.5  rounded-md bg-green-500 items-center justify-center left-2">
+                  <Text className="text-center text-white font-semibold text-xs">
                     (510) 298-1672
                   </Text>
                 </DataTable.Cell>

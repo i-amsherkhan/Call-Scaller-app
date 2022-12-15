@@ -12,7 +12,7 @@ import { Auth } from "../context/ContextProvider";
 
 function CustomDrawerContent(props) {
   const { handleSingedOut } = useContext(Auth);
-  
+
   return (
     <>
       <View className="mb-3 bg-black py-2">
@@ -20,7 +20,7 @@ function CustomDrawerContent(props) {
           <View className="rounded-full items-start justify-start p-12  relative">
             <Image
               source={{
-                uri: "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                uri: "https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.jpg",
               }}
               className="w-20 h-full p-12 absolute rounded-full"
             />
@@ -50,19 +50,19 @@ function CustomDrawerContent(props) {
           </View>
         </View>
       </View>
+      
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
-      <View className>
-        <TouchableOpacity
-          className=" flex-row mx-5  mt-4"
-          onPress={handleSingedOut}
-        >
-          <ArrowRightOnRectangleIcon size={23} color="black" opacity={1}/>
-          <Text className="mx-2.5 text-sm">Log Out</Text>
-        </TouchableOpacity>
-      </View>
+        <View className>
+          <TouchableOpacity
+            className=" flex-row mx-5  mt-4"
+            onPress={handleSingedOut}
+          >
+            <ArrowRightOnRectangleIcon size={23} color="black" opacity={1} />
+            <Text className="mx-2.5 text-sm">Log Out</Text>
+          </TouchableOpacity>
+        </View>
       </DrawerContentScrollView>
-
     </>
   );
 }

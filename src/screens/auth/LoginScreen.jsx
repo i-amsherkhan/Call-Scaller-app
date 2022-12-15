@@ -37,12 +37,6 @@ const LoginScreen = () => {
               />
             </TouchableOpacity>
 
-            {!state.password || state.auth ? (
-              <Text className="text-rose-600">
-                The selected email is invalid.
-              </Text>
-            ) : null}
-
             <Text className="text-lg py-2 text-gray-900/70 font-semibold">
               Password:
             </Text>
