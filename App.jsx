@@ -12,25 +12,25 @@ const HANDLE_AUTH = {
   SINGEDOUT: "handleSingedOut",
 };
 export default function App() {
-  const [testing, setTesting] = useState();
+  const [testing, setTesting] = useState([]);
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((data) => setTesting(data));
   }, []);
 
-  console.log(testing);
-  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   const [state, dispatch] = useReducer(reducer, {
     email: "",
     password: "",
-    auth: false,
+    auth: true,
   });
 
+  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   function reducer(state, action) {
     switch (action.type) {
       case HANDLE_AUTH.SINGEDIN:
-        if (!state.email || !state.password) {
+        if (!reg.test(state.email) || !state.password) {
           return { auth: (state.auth = false) };
         } else if (!reg.test(state.email)) {
           return { auth: (state.auth = false) };
