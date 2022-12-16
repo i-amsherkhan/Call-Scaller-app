@@ -11,22 +11,38 @@ const HANDLE_AUTH = {
   SINGEDIN: "handleSingedIn",
   SINGEDOUT: "handleSingedOut",
 };
+
 export default function App() {
-  const [testing, setTesting] = useState([]);
+  const [page, setPage] = useState(1);
+  const [apiData, setApiData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => setTesting(data));
-  }, []);
+    const fetchData = async () => {
+      setLoading(true);
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/posts?page=${page}`
+      );
+      const newData = await response.json();
+      setApiData((prevData) => [...prevData, ...newData.items]);
+      setTotalPages(newData.totalPages);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [page]);
+
+  const handlePageChange = () => {
+    setPage(page);
+  };
 
   const [state, dispatch] = useReducer(reducer, {
     email: "",
     password: "",
-    auth: true,
+    auth: false,
   });
 
-  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   function reducer(state, action) {
     switch (action.type) {
       case HANDLE_AUTH.SINGEDIN:
@@ -64,9 +80,11 @@ export default function App() {
         <StatusBar />
         <NavigationContainer>
           <Auth.Provider
-            value={{ handleSingedOut, handleSingedIn, state, dispatch, reg }}
+            value={{ handleSingedOut, handleSingedIn, state, dispatch }}
           >
-            <ApiContext.Provider value={{ testing }}>
+            <ApiContext.Provider
+              value={{ page, totalPages, handlePageChange, apiData }}
+            >
               {state.auth ? <AppStack /> : <AuthStack />}
             </ApiContext.Provider>
           </Auth.Provider>

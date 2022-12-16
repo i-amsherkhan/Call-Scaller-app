@@ -3,10 +3,13 @@ import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../components/Header";
 import { DataTable } from "react-native-paper";
-
+import { Pagination } from "react-native-paper";
+import { ApiContext } from "../../context/ContextProvider";
 
 const NumberScreen = ({ navigation }) => {
-  
+  const { page, totalPages, handlePageChange, apiData } =
+    useContext(ApiContext);
+
   return (
     <>
       <SafeAreaView>
@@ -26,7 +29,7 @@ const NumberScreen = ({ navigation }) => {
                   </Text>
                 </DataTable.Title>
 
-                <DataTable.Title className=" py-3 px-8">
+                <DataTable.Title className=" py-3 px-8 left-4">
                   <Text className="text-left text-gray-500 uppercase tracking-wider">
                     Call Flow
                   </Text>
@@ -52,23 +55,84 @@ const NumberScreen = ({ navigation }) => {
               </DataTable.Header>
 
               <DataTable.Row className="bg-white py-5 ">
-                <DataTable.Cell>
+                <FlatList
+                  keyExtractor={(item) => item.id}
+                  data={apiData}
+                  renderItem={({ item }) => (
+                    <>
+                      <DataTable.Cell className="w-24 mt-2">
+                        <Text className="truncate text-gray-900 text-center">
+                          {item.title}
+                        </Text>
+                      </DataTable.Cell>
+                    </>
+                  )}
+                />
+                <FlatList
+                  keyExtractor={(item) => item.id}
+                  data={apiData}
+                  renderItem={({ item }) => (
+                    <>
+                      <DataTable.Cell className="w-24 mt-2">
+                        <Text className="truncate text-gray-900 text-center">
+                          {item.title}
+                        </Text>
+                      </DataTable.Cell>
+                    </>
+                  )}
+                />
+                <FlatList
+                  keyExtractor={(item) => item.id}
+                  data={apiData}
+                  renderItem={({ item }) => (
+                    <>
+                      <DataTable.Cell className="w-24 mt-2">
+                        <Text className="truncate text-gray-900 text-center">
+                          {item.title}
+                        </Text>
+                      </DataTable.Cell>
+                    </>
+                  )}
+                />
+                <FlatList
+                  keyExtractor={(item) => item.id}
+                  data={apiData}
+                  renderItem={({ item }) => (
+                    <>
+                      <DataTable.Cell className="w-24 mt-2">
+                        <Text className="truncate text-gray-900 text-center">
+                          {item.title}
+                        </Text>
+                      </DataTable.Cell>
+                    </>
+                  )}
+                />
+                <FlatList
+                  keyExtractor={(item) => item.id}
+                  data={apiData}
+                  renderItem={({ item }) => (
+                    <>
+                      <DataTable.Cell className="w-24 mt-2">
+                        <Text className="truncate text-gray-900 text-center">
+                          {item.title}
+                        </Text>
+                      </DataTable.Cell>
+                    </>
+                  )}
+                />
+                {/* <DataTable.Cell>
                   <View className="truncate w-36">
-                    <Text className=" text-gray-900 ">User Purchase</Text>
+                    <FlatList />
+                    <Text className="text-gray-900 ">User Purchase</Text>
                     <View class="mt-4">
-                      <Text className=" text-gray-900 pt-2 ">
+                      <Text className="text-gray-900 pt-2 ">
                         (256) 287-4150
                       </Text>
                     </View>
                   </View>
-                </DataTable.Cell>
+                </DataTable.Cell> */}
 
-                <DataTable.Cell className=" right-10">
-                  <Text className="truncate text-gray-900 text-center">
-                    Hello Call Flow
-                  </Text>
-                </DataTable.Cell>
-                <DataTable.Cell className="truncate w-32 left-4">
+                {/* <DataTable.Cell className="truncate w-32 left-4">
                   <Text className="text-gray-900 text-center">4000</Text>
                 </DataTable.Cell>
 
@@ -87,9 +151,17 @@ const NumberScreen = ({ navigation }) => {
                       </Text>
                     </View>
                   </View>
-                </DataTable.Cell>
+                </DataTable.Cell> */}
               </DataTable.Row>
-              
+
+              {totalPages > 1 && (
+                <Pagination
+                  size={10}
+                  length={totalPages}
+                  activePage={page}
+                  onPageChange={handlePageChange}
+                />
+              )}
             </DataTable>
           </ScrollView>
         </ScrollView>
