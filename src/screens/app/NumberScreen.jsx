@@ -7,8 +7,7 @@ import { Pagination } from "react-native-paper";
 import { ApiContext } from "../../context/ContextProvider";
 
 const NumberScreen = ({ navigation }) => {
-  const { page, totalPages, handlePageChange, apiData } =
-    useContext(ApiContext);
+  const { page, totalPages, apiData } = useContext(ApiContext);
 
   return (
     <>
@@ -55,6 +54,7 @@ const NumberScreen = ({ navigation }) => {
               </DataTable.Header>
 
               <DataTable.Row className="bg-white py-5 ">
+
                 <FlatList
                   keyExtractor={(item) => item.id}
                   data={apiData}
@@ -120,6 +120,7 @@ const NumberScreen = ({ navigation }) => {
                     </>
                   )}
                 />
+
                 {/* <DataTable.Cell>
                   <View className="truncate w-36">
                     <FlatList />
@@ -152,16 +153,10 @@ const NumberScreen = ({ navigation }) => {
                     </View>
                   </View>
                 </DataTable.Cell> */}
+                
               </DataTable.Row>
 
-              {totalPages > 1 && (
-                <Pagination
-                  size={10}
-                  length={totalPages}
-                  activePage={page}
-                  onPageChange={handlePageChange}
-                />
-              )}
+              
             </DataTable>
           </ScrollView>
         </ScrollView>
