@@ -3,21 +3,26 @@ import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../components/Header";
 import { DataTable } from "react-native-paper";
-import { Pagination } from "react-native-paper";
 import { ApiContext } from "../../context/ContextProvider";
+import Pagination from "../../components/Pagination";
 
 const NumberScreen = ({ navigation }) => {
-  const { page, totalPages, apiData } = useContext(ApiContext);
+  const { currentPosts, loading } = useContext(ApiContext);
 
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
   return (
     <>
       <SafeAreaView>
         <ScrollView>
-          <Header navigation={navigation} />
+          <Header navigation={navigation} />     
 
           <View className="bg-white  px-4 py-5 border-b border-gray-200 rounded-lg shadow mx-2 mt-2">
             <Text className="text-lg leading-6 text-gray-900">Numbers</Text>
           </View>
+
+         
 
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <DataTable className="px-2 py-2  flex-1 h-full">
@@ -54,10 +59,9 @@ const NumberScreen = ({ navigation }) => {
               </DataTable.Header>
 
               <DataTable.Row className="bg-white py-5 ">
-
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -70,7 +74,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -83,7 +87,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -96,7 +100,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -109,7 +113,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -153,10 +157,8 @@ const NumberScreen = ({ navigation }) => {
                     </View>
                   </View>
                 </DataTable.Cell> */}
-                
               </DataTable.Row>
-
-              
+              <Pagination />
             </DataTable>
           </ScrollView>
         </ScrollView>

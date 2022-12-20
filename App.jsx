@@ -6,19 +6,34 @@ import AuthStack from "./src/routes/AuthStack";
 import { Auth } from "./src/context/ContextProvider";
 import { ApiContext } from "./src/context/ContextProvider";
 import { useEffect, useState, useReducer } from "react";
+import axios from "axios";
 
 export default function App() {
-  const [page, setPage] = useState(0);
-  const [pagePerItem, setPagePerItem] = useState()
-  const [apiData, setApiData] = useState();
   
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?page=${page}`)
-      .then((res) => res.json())
-      .then((data) => setApiData(data));
-  }, []);
-  console.log(apiData);
+  // Pagination Functionality 
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(10);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      setPosts(res.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  }, []);
+
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirtPost = indexOfLastPost - postPerPage;
+  const currentPosts = posts.slice(indexOfFirtPost, indexOfLastPost);
+  const totalPosts = posts.length;
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Auth Functionality
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   const HANDLE_AUTH = {
     SINGEDIN: "handleSingedIn",
@@ -62,6 +77,7 @@ export default function App() {
     authDispatch({ type: HANDLE_AUTH.SINGEDOUT });
   }
 
+
   return (
     <>
       <PaperProvider>
@@ -70,7 +86,15 @@ export default function App() {
           <Auth.Provider
             value={{ handleSingedOut, handleSingedIn, authState, authDispatch }}
           >
-            <ApiContext.Provider value={{ apiData }}>
+            <ApiContext.Provider
+              value={{
+                loading,
+                currentPosts,
+                postPerPage,
+                totalPosts, 
+                paginate,
+              }}
+            >
               {authState.auth ? <AppStack /> : <AuthStack />}
             </ApiContext.Provider>
           </Auth.Provider>
