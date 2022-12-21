@@ -9,12 +9,11 @@ import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 
 export default function App() {
-  
-  // Pagination Functionality 
+  // Pagination Functionality
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(10);
+  const [postPerPage] = useState(20);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -26,14 +25,29 @@ export default function App() {
     fetchPosts();
   }, []);
 
-  const indexOfLastPost = currentPage * postPerPage;
-  const indexOfFirtPost = indexOfLastPost - postPerPage;
-  const currentPosts = posts.slice(indexOfFirtPost, indexOfLastPost);
+  const indexOfLastPosts = currentPage * postPerPage;
+  const indexOfFirtPosts = indexOfLastPosts - postPerPage;
+  const currentPosts = posts.slice(indexOfFirtPosts, indexOfLastPosts);
   const totalPosts = posts.length;
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Auth Functionality
+  function nextPage() {
+    if (currentPage < 5) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  }
+
+  function prevPage() {
+    if (currentPage < 1) {
+      setCurrentPage(1);
+    } else if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  }
+
+  console.log(currentPage);
+  console.log(indexOfLastPosts);
+
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   const HANDLE_AUTH = {
     SINGEDIN: "handleSingedIn",
@@ -77,7 +91,6 @@ export default function App() {
     authDispatch({ type: HANDLE_AUTH.SINGEDOUT });
   }
 
-
   return (
     <>
       <PaperProvider>
@@ -91,8 +104,12 @@ export default function App() {
                 loading,
                 currentPosts,
                 postPerPage,
-                totalPosts, 
+                totalPosts,
                 paginate,
+                indexOfLastPosts,
+                indexOfFirtPosts,
+                nextPage,
+                prevPage,
               }}
             >
               {authState.auth ? <AppStack /> : <AuthStack />}
