@@ -3,13 +3,19 @@ import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../components/Header";
 import { DataTable } from "react-native-paper";
-import { Pagination } from "react-native-paper";
 import { ApiContext } from "../../context/ContextProvider";
+import Pagination from "../../components/Pagination";
 
 const NumberScreen = ({ navigation }) => {
-  const { page, totalPages, handlePageChange, apiData } =
-    useContext(ApiContext);
+  const { currentPosts, loading } = useContext(ApiContext);
 
+  if (loading) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white">
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
   return (
     <>
       <SafeAreaView>
@@ -57,7 +63,7 @@ const NumberScreen = ({ navigation }) => {
               <DataTable.Row className="bg-white py-5 ">
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -70,7 +76,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -83,7 +89,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -96,7 +102,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -109,7 +115,7 @@ const NumberScreen = ({ navigation }) => {
                 />
                 <FlatList
                   keyExtractor={(item) => item.id}
-                  data={apiData}
+                  data={currentPosts}
                   renderItem={({ item }) => (
                     <>
                       <DataTable.Cell className="w-24 mt-2">
@@ -120,50 +126,10 @@ const NumberScreen = ({ navigation }) => {
                     </>
                   )}
                 />
-                {/* <DataTable.Cell>
-                  <View className="truncate w-36">
-                    <FlatList />
-                    <Text className="text-gray-900 ">User Purchase</Text>
-                    <View class="mt-4">
-                      <Text className="text-gray-900 pt-2 ">
-                        (256) 287-4150
-                      </Text>
-                    </View>
-                  </View>
-                </DataTable.Cell> */}
-
-                {/* <DataTable.Cell className="truncate w-32 left-4">
-                  <Text className="text-gray-900 text-center">4000</Text>
-                </DataTable.Cell>
-
-                <DataTable.Cell className="truncate w-20">
-                  <Text className=" text-gray-900 text-center">400</Text>
-                </DataTable.Cell>
-
-                <DataTable.Cell className="truncate w-20">
-                  <View>
-                    <View className="bg-green-100 rounded-full p-1">
-                      <Text className="text-gray-900 text-center">Active</Text>
-                    </View>
-                    <View className="pt-2">
-                      <Text className=" text-gray-900 text-center">
-                        Toll Free
-                      </Text>
-                    </View>
-                  </View>
-                </DataTable.Cell> */}
               </DataTable.Row>
-
-              {totalPages > 1 && (
-                <Pagination
-                  size={10}
-                  length={totalPages}
-                  activePage={page}
-                  onPageChange={handlePageChange}
-                />
-              )}
             </DataTable>
           </ScrollView>
+          <Pagination />
         </ScrollView>
       </SafeAreaView>
     </>

@@ -6,60 +6,77 @@ import AuthStack from "./src/routes/AuthStack";
 import { Auth } from "./src/context/ContextProvider";
 import { ApiContext } from "./src/context/ContextProvider";
 import { useEffect, useState, useReducer } from "react";
-
-const HANDLE_AUTH = {
-  SINGEDIN: "handleSingedIn",
-  SINGEDOUT: "handleSingedOut",
-};
+import axios from "axios";
 
 export default function App() {
-  const [page, setPage] = useState(1);
-  const [apiData, setApiData] = useState([]);
+  // Pagination Functionality
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(30);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPosts = async () => {
       setLoading(true);
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts?page=${page}`
-      );
-      const newData = await response.json();
-      setApiData((prevData) => [...prevData, ...newData.items]);
-      setTotalPages(newData.totalPages);
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      setPosts(res.data);
       setLoading(false);
     };
+    fetchPosts();
+  }, []);
 
-    fetchData();
-  }, [page]);
+  
 
-  const handlePageChange = () => {
-    setPage(page);
+  var indexOfLastPosts = currentPage * postPerPage;
+  const indexOfFirstPosts = indexOfLastPosts - postPerPage;
+  const currentPosts = posts.slice(indexOfFirstPosts, indexOfLastPosts);
+  var totalPosts = posts.length;
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  function nextPage() {
+    if (indexOfLastPosts < totalPosts) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  }
+
+  function prevPage() {
+    if (currentPage < 1) {
+      setCurrentPage(1);
+    } else if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  }
+
+  // Auth Functionality
+  var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  const HANDLE_AUTH = {
+    SINGEDIN: "handleSingedIn",
+    SINGEDOUT: "handleSingedOut",
   };
 
-  const [state, dispatch] = useReducer(reducer, {
+  const [authState, authDispatch] = useReducer(authentication, {
     email: "",
     password: "",
-    auth: false,
+    auth: true,
   });
 
-  function reducer(state, action) {
+  function authentication(authState, action) {
     switch (action.type) {
       case HANDLE_AUTH.SINGEDIN:
-        if (!reg.test(state.email) || !state.password) {
-          return { auth: (state.auth = false) };
-        } else if (!reg.test(state.email)) {
-          return { auth: (state.auth = false) };
+        if (!reg.test(authState.email) || !authState.password) {
+          return { auth: (authState.auth = false) };
+        } else if (!reg.test(authState.email)) {
+          return { auth: (authState.auth = false) };
         } else {
-          return { auth: (state.auth = true) };
+          return { auth: (authState.auth = true) };
         }
       case "email":
-        return { ...state, email: action.value };
+        return { ...authState, email: action.value };
       case "password":
-        return { ...state, password: action.value };
+        return { ...authState, password: action.value };
 
       case HANDLE_AUTH.SINGEDOUT:
-        return { auth: (state.auth = false) };
+        return { auth: (authState.auth = false) };
 
       default:
         break;
@@ -67,11 +84,11 @@ export default function App() {
   }
 
   function handleSingedIn() {
-    dispatch({ type: HANDLE_AUTH.SINGEDIN });
+    authDispatch({ type: HANDLE_AUTH.SINGEDIN });
   }
 
   function handleSingedOut() {
-    dispatch({ type: HANDLE_AUTH.SINGEDOUT });
+    authDispatch({ type: HANDLE_AUTH.SINGEDOUT });
   }
 
   return (
@@ -80,12 +97,22 @@ export default function App() {
         <StatusBar />
         <NavigationContainer>
           <Auth.Provider
-            value={{ handleSingedOut, handleSingedIn, state, dispatch }}
+            value={{ handleSingedOut, handleSingedIn, authState, authDispatch }}
           >
             <ApiContext.Provider
-              value={{ page, totalPages, handlePageChange, apiData }}
+              value={{
+                loading,
+                currentPosts,
+                postPerPage,
+                totalPosts,
+                paginate,
+                indexOfLastPosts,
+                indexOfFirstPosts,
+                nextPage,
+                prevPage,
+              }}
             >
-              {state.auth ? <AppStack /> : <AuthStack />}
+              {authState.auth ? <AppStack /> : <AuthStack />}
             </ApiContext.Provider>
           </Auth.Provider>
         </NavigationContainer>

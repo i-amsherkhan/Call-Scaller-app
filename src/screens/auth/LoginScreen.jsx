@@ -4,7 +4,7 @@ import { Auth } from "../../context/ContextProvider";
 import Checkbox from "expo-checkbox";
 
 const LoginScreen = () => {
-  const { handleSingedIn, state, dispatch } = useContext(Auth);
+  const { handleSingedIn, authState, authDispatch } = useContext(Auth);
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -27,10 +27,10 @@ const LoginScreen = () => {
             <TouchableOpacity>
               <TextInput
                 className="px-2 py-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500"
-                value={state.email}
+                value={authState.email}
                 placeholder="Enter your email:"
                 onChangeText={(email) => {
-                  dispatch({ type: "email", value: email });
+                  authDispatch({ type: "email", value: email });
                 }}
                 autoComplete={"email"}
                 autoCorrect={false}
@@ -42,12 +42,12 @@ const LoginScreen = () => {
             </Text>
             <TextInput
               className="px-2 py-1  border border-gray-300 text-gray-900/70 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500"
-              value={state.password}
+              value={authState.password}
               autoComplete={"password"}
               secureTextEntry={true}
               placeholder="Enter your password:"
               onChangeText={(text) => {
-                dispatch({ type: "password", value: text });
+                authDispatch({ type: "password", value: text });
               }}
             />
           </View>
