@@ -13,7 +13,7 @@ export default function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(20);
+  const [postPerPage] = useState(30);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -25,14 +25,16 @@ export default function App() {
     fetchPosts();
   }, []);
 
-  const indexOfLastPosts = currentPage * postPerPage;
-  const indexOfFirtPosts = indexOfLastPosts - postPerPage;
-  const currentPosts = posts.slice(indexOfFirtPosts, indexOfLastPosts);
-  const totalPosts = posts.length;
+  
+
+  var indexOfLastPosts = currentPage * postPerPage;
+  const indexOfFirstPosts = indexOfLastPosts - postPerPage;
+  const currentPosts = posts.slice(indexOfFirstPosts, indexOfLastPosts);
+  var totalPosts = posts.length;
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   function nextPage() {
-    if (currentPage < 5) {
+    if (indexOfLastPosts < totalPosts) {
       setCurrentPage((prevPage) => prevPage + 1);
     }
   }
@@ -45,10 +47,8 @@ export default function App() {
     }
   }
 
-  console.log(currentPage);
-  console.log(indexOfLastPosts);
-
-  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  // Auth Functionality
+  var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
   const HANDLE_AUTH = {
     SINGEDIN: "handleSingedIn",
     SINGEDOUT: "handleSingedOut",
@@ -107,7 +107,7 @@ export default function App() {
                 totalPosts,
                 paginate,
                 indexOfLastPosts,
-                indexOfFirtPosts,
+                indexOfFirstPosts,
                 nextPage,
                 prevPage,
               }}
